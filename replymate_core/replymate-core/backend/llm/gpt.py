@@ -1,5 +1,3 @@
-# backend/llm/gpt.py
-
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -26,9 +24,6 @@ def generate_reply(context: str, tone: str = "professional") -> str:
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            # Optionally, you can set max_tokens, temperature, etc.
-            # max_tokens=512,
-            # temperature=0.7,
         )
     except RateLimitError:
         raise RuntimeError("OpenAI rate limit exceeded; please try again later.")
